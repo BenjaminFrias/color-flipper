@@ -1,0 +1,106 @@
+/* GENERAL */
+
+* {
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+button {
+    background: none;
+    border: none;
+    outline: 0px;
+}
+
+/* HEADER */
+
+.header {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 60px;
+    top: 20px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    padding: 0px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header h1 {
+    color: white;
+    cursor: pointer;
+}
+
+.header button {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.342);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    transition: all 150ms ease;
+    cursor: pointer;
+}
+
+.header button:hover {
+    scale: 1.2;
+    transition: all 150ms ease;
+}
+
+.header button svg {
+    color: white;
+    stroke: 10px;
+}
+
+/* COLORS */
+
+.color-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    box-sizing: border-box;
+}
+
+.color {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    height: 100%;
+    gap: 20px;
+    padding-bottom: 1rem;
+    background: rgb(126, 126, 236);
+    border-right: 1px solid black;
+}
+
+.color > div {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+}
+
+.color > button.hex {
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 2.7rem);
+}
+
+.color > div button.block-btn {
+    display: flex;
+    align-items: center;
+}
