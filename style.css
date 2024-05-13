@@ -6,7 +6,7 @@
 }
 
 .container {
-    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
 }
 
@@ -71,12 +71,14 @@ button {
 .color-container {
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
     box-sizing: border-box;
 }
 
 .color {
+    flex-basis: 100%;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -85,7 +87,13 @@ button {
     gap: 20px;
     padding-bottom: 1rem;
     background: rgb(126, 126, 236);
-    border-right: 1px solid black;
+    transition: flex-basis 150ms ease;
+}
+
+.color.removed {
+    flex-basis: 0%;
+    transition: flex-basis 150ms ease;
+    overflow: hidden;
 }
 
 .color > div {
@@ -97,10 +105,17 @@ button {
 
 .color > button.hex {
     font-weight: 600;
-    font-size: clamp(2rem, 5vw, 2.7rem);
+    font-size: 2rem;
+    cursor: grab;
 }
 
 .color > div button.block-btn {
     display: flex;
     align-items: center;
+    transition: all 150ms ease;
+}
+
+.color > div button.block-btn:hover {
+    scale: 1.2;
+    transition: all 150ms ease;
 }
