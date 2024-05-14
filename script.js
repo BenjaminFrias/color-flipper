@@ -56,17 +56,36 @@ colorsObjs.forEach((obj) => {
 colorsObjs.forEach((obj) => {
     const removeBtn = obj.div.querySelector(".remove-btn");
     removeBtn.addEventListener("click", () => {
-            obj.isDeleted = true;
-            
-            if (checkAllDeletedObjs() > 0) {
-                obj.div.classList.add("removed");
-            }
-            else {
-                obj.isDeleted = false;
-            }
+        obj.isDeleted = true;
+
+        if (checkAllDeletedObjs() > 0) {
+            obj.div.classList.add("removed");
+        } else {
+            obj.isDeleted = false;
+        }
     });
 });
 
+// Copy colors btns
+hexBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        copyColor(btn.textContent, index);
+    });
+
+    btn.addEventListener("mouseout", () => {
+        clearTooltip(index);
+    });
+});
+
+var tooltips = document.querySelectorAll("#myTooltip");
+function copyColor(color, btnIndex) {
+    navigator.clipboard.writeText(color);
+    tooltips[btnIndex].textContent = "Copied: " + color;
+}
+
+function clearTooltip(index) {
+    tooltips[index].textContent = "Copy to clipboard";
+}
 
 // Add color
 addColorBtn.addEventListener("click", () => {
@@ -93,7 +112,7 @@ function changeColors() {
         if (!colorObj.isblocked) {
             let random = randomColor().toUpperCase();
             let luminance = getContrastYIQ(random);
-            
+
             colorObj.div.style.backgroundColor = `#${random}`;
 
             hexBtns[i].textContent = `#${random}`;

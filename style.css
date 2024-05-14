@@ -12,7 +12,6 @@
     flex-direction: column;
 }
 
-
 button {
     background: none;
     border: none;
@@ -47,7 +46,6 @@ button {
     cursor: pointer;
 }
 
-
 .header button.add-color-btn {
     display: flex;
     color: white;
@@ -81,7 +79,7 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-@media (max-width:800px) {
+@media (max-width: 800px) {
     .header {
         position: relative;
         top: 0;
@@ -120,8 +118,7 @@ button {
     box-sizing: border-box;
 }
 
-@media (max-width:800px) {
-
+@media (max-width: 800px) {
     .color-container {
         flex-direction: column;
         height: 100%;
@@ -160,7 +157,10 @@ button {
     gap: 20px;
 }
 
-.color > button.hex {
+.color > .tooltip > button.hex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 600;
     font-size: 2rem;
     cursor: grab;
@@ -177,3 +177,36 @@ button {
     transition: all 150ms ease;
 }
 
+/* COPY COLOR AFTER */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    right: 0%;
+    margin-left: -65px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+    
