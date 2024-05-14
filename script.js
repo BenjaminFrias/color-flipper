@@ -1,6 +1,8 @@
 const colorsDivs = document.querySelectorAll(".color");
 const hexBtns = document.querySelectorAll(".color .hex");
 const addColorBtn = document.querySelector(".add-color-btn");
+const refreshBtn = document.querySelector(".refresh-btn");
+const blockBtns = document.querySelectorAll(".color div .block-btn");
 
 class Color {
     constructor(div, isblocked, isDeleted) {
@@ -24,8 +26,22 @@ document.addEventListener("DOMContentLoaded", () => {
     changeColors();
 });
 
-document.addEventListener("keypress", () => {
+document.addEventListener("keypress", (e) => {
+    if (e.code === "Space") {
+        // Prevent the default spacebar action
+        e.preventDefault();
+    }
     changeColors();
+});
+
+// Block space from press block buttons
+blockBtns.forEach(function (button) {
+    button.addEventListener("keydown", function (event) {
+        if (event.code === "Space") {
+            event.preventDefault();
+            button.blur();
+        }
+    });
 });
 
 // Block color
@@ -59,6 +75,10 @@ addColorBtn.addEventListener("click", () => {
     });
 });
 
+// Refresh page
+refreshBtn.addEventListener("click", () => {
+    changeColors();
+});
 
 function changeColors() {
     colorsObjs.forEach((colorObj, i) => {
@@ -68,6 +88,7 @@ function changeColors() {
             let luminance = getContrastYIQ(random);
 
             colorObj.div.style.backgroundColor = `#${random}`;
+
             hexBtns[i].textContent = `#${random}`;
             hexBtns[i].style.color = luminance;
         }
