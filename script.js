@@ -56,10 +56,17 @@ colorsObjs.forEach((obj) => {
 colorsObjs.forEach((obj) => {
     const removeBtn = obj.div.querySelector(".remove-btn");
     removeBtn.addEventListener("click", () => {
-        obj.isDeleted = true;
-        obj.div.classList.add("removed");
+            obj.isDeleted = true;
+            
+            if (checkAllDeletedObjs() > 0) {
+                obj.div.classList.add("removed");
+            }
+            else {
+                obj.isDeleted = false;
+            }
     });
 });
+
 
 // Add color
 addColorBtn.addEventListener("click", () => {
@@ -86,7 +93,7 @@ function changeColors() {
         if (!colorObj.isblocked) {
             let random = randomColor().toUpperCase();
             let luminance = getContrastYIQ(random);
-
+            
             colorObj.div.style.backgroundColor = `#${random}`;
 
             hexBtns[i].textContent = `#${random}`;
@@ -97,6 +104,16 @@ function changeColors() {
 
 function randomColor() {
     return Math.floor(Math.random() * 16777215).toString(16);
+}
+
+function checkAllDeletedObjs() {
+    let currentObjs = 0;
+    colorsObjs.forEach((color) => {
+        if (!color.isDeleted) {
+            currentObjs++;
+        }
+    });
+    return currentObjs;
 }
 
 function getContrastYIQ(hexcolor) {
