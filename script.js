@@ -150,5 +150,5 @@ function getContrastYIQ(hexcolor) {
     var yiq = (r * 299 + g * 587 + b * 114) / 1000;
 
     // Return black for bright colors, white for dark colors
-    return yiq >= 128 ? "#101010" : "white";
+    return yiq >= 128 ? "black" : "white";
 }
