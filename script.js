@@ -34,7 +34,7 @@ document.addEventListener("keypress", (e) => {
     changeColors();
 });
 
-// Block space from press block buttons
+// Block space from press block buttons and toggle icons
 blockBtns.forEach(function (button) {
     button.addEventListener("keydown", function (event) {
         if (event.code === "Space") {
@@ -44,11 +44,16 @@ blockBtns.forEach(function (button) {
     });
 });
 
-// Block color
+// Block color and toggle icons
 colorsObjs.forEach((obj) => {
     const blockBtn = obj.div.querySelector(".block-btn");
+    const lockIcon = obj.div.querySelector(".block-btn svg.lock");
+    const unlockIcon = obj.div.querySelector(".block-btn svg.unlock");
+
     blockBtn.addEventListener("click", () => {
         obj.isblocked = obj.isblocked ? false : true;
+        lockIcon.classList.toggle("hide");
+        unlockIcon.classList.toggle("display");
     });
 });
 

@@ -79,6 +79,11 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.header p {
+    font-weight: 500;
+    color: white;
+}
+
 @media (max-width: 800px) {
     .header {
         position: relative;
@@ -87,6 +92,10 @@ button {
         border-radius: 0px;
         width: 100%;
         background: white;
+    }
+
+    .header p {
+        display: none;
     }
 
     .header h1 {
@@ -166,15 +175,36 @@ button {
     cursor: grab;
 }
 
-.color > div button.block-btn {
+.color button {
     display: flex;
     align-items: center;
+}
+
+.color button {
     transition: all 150ms ease;
 }
 
-.color > div button.block-btn:hover {
+.color > div button:hover {
     scale: 1.2;
     transition: all 150ms ease;
+}
+
+/* LOCK BUTTON */
+
+.color > div button svg.lock {
+    display: none;
+}
+
+.color > div button svg.lock.hide {
+    display: block;
+}
+
+.color > div button svg.unlock {
+    display: block;
+}
+
+.color > div button svg.unlock.display {
+    display: none;
 }
 
 /* COPY COLOR AFTER */
